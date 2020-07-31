@@ -17,7 +17,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    print(message.content)
     if message.content.startswith(translate_command):
         lang = message.content[len(translate_command):message.content.find(' ')]
         ttt = message.content[len(translate_command)+len(lang)+1:]
