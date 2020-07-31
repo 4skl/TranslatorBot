@@ -7,3 +7,6 @@ commands are :
   $t<lang_from> <Text> for translating Text from lang_from to english
   $t<lang_from><lang_to> <Text> for translating Text from lang_from to lang_to
 lang_from and lang_to are ISO 639-1, 2 letters codes 
+
+## Disclaimer
+This bot is under development so yeh the code isn't perfect
