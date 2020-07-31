@@ -32,6 +32,17 @@ async def on_message(message):
             'langpair': lang+'|en' if len(lang) == 2 else lang[:2]+'|'+lang[2:]
         }
         r = requests.get('https://api.mymemory.translated.net/get', params=body)
-        await message.channel.send(unescape(r.json()['responseData']['translatedText']))
+        
+        message_sent = await message.channel.send(unescape(r.json()['responseData']['translatedText']))
+        
+        def check(reaction, user):
+            return user == message.author and str(reaction.emoji) == '❌'
+        
+        try:
+            reaction, user = await client.wait_for('reaction_add', timeout=600.0, check=check)
+        except asyncio.TimeoutError:
+            pass
+        else:
+            await message_sent.delete()
 
 client.run(TOKEN)
