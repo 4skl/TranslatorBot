@@ -1,7 +1,6 @@
 import discord, requests
-from dotenv import load_dotenv
 from random import choice
-load_dotenv()
+
 TOKEN = 'TOKEN'
 
 translate_command = '$t'
