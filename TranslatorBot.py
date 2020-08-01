@@ -2,6 +2,7 @@ import discord, requests
 from random import choice
 
 TOKEN = 'TOKEN'
+CONTACT_EMAIL = None #'Contact email for getting 10000 words/day instead of 1000'
 
 translate_command = '$t'
 id_start = '<@!'
@@ -27,7 +28,8 @@ async def on_message(message):
             s = ttt.find(id_start)
         body = {
             'q': ttt,
-            'langpair': lang+'|en' if len(lang) == 2 else lang[:2]+'|'+lang[2:]
+            'langpair': lang+'|en' if len(lang) == 2 else lang[:2]+'|'+lang[2:],
+            'de': CONTACT_EMAIL
         }
         r = requests.get('https://api.mymemory.translated.net/get', params=body)
         
